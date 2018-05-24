@@ -45,7 +45,7 @@ gameState.prototype = {
     },
 
     initBoard: function () {
-        this.board = new Board(gameProperties.boardWidth, gameProperties.boardHeight);
+        this.board = new Board(gameProperties.boardWidth, gameProperties.boardHeight, gameProperties.totalMines);
         this.board.moveTo(this.boardLeft, this.boardTop);
     }
 };

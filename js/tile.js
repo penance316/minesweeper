@@ -1,5 +1,5 @@
 var Tile = function(column, row, group) {
-  var states = {
+  this.states = {
     ZERO: 0,
     ONE: 1,
     TWO: 2,
@@ -24,8 +24,8 @@ var Tile = function(column, row, group) {
 
   var tile = this;
 
-  var currentFrame = states.DEFAULT;
-  var currentValue = states.ZERO;
+  var currentFrame = this.states.DEFAULT;
+  var currentValue = this.states.ZERO;
 
   var sprite = game.add.sprite(
     column * gameProperties.tileWidth,
@@ -56,12 +56,24 @@ var Tile = function(column, row, group) {
   };
 
   var click = function() {
-      tile.reveal();
+    tile.reveal();
   };
 
+  /**
+   * PUBLIC
+   */
+
   this.reveal = function() {
-      sprite.animations.frame = currentValue;
-      sprite.inputEnabled = false;
+    sprite.animations.frame = currentValue;
+    sprite.inputEnabled = false;
+  };
+
+  this.setValue = function(value) {
+    currentValue = value;
+  };
+
+  this.getValue = function() {
+    return currentValue;
   };
 
   init();
